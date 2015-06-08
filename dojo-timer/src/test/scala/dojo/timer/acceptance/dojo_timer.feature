@@ -18,7 +18,7 @@ Feature: Timer
     And the pause button is pushed
     And 1 minute have passed
     And the start button is pushed
-    And 2 minute have passed
+    And 2 minutes have passed
     Then the timer should display: 00:05:00
 
   Scenario: Timer Countdown 5 minutes
