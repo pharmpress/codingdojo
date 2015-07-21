@@ -6,5 +6,6 @@ scalaVersion := "2.11.6"
 
 libraryDependencies ++= Seq(
   "com.chuusai" %% "shapeless" % "2.2.4", //2.2.4 //2.0.0
-  "com.typesafe.play" %% "play-json" % "2.4.2" //2.4.2  //2.3.7
+  "com.typesafe.play" %% "play-json" % "2.4.2", //2.4.2  //2.3.7
+  "org.scalatest" %% "scalatest" % "2.2.4" % "test"
 )

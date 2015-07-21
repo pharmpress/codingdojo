@@ -59,11 +59,14 @@ package object json {
 
       def product[F, T <: HList](name: String, FHead: Reads[F], FTail: Reads[T]) = Reads[F :#: T] {
         case obj @ JsObject(fields) =>
-          for {
-            head <- FHead.reads((obj \ name).get)
-            tail <- FTail.reads(obj - name)
-          } yield head :: tail
-
+          obj \ name match {
+            case JsDefined(node) =>
+              for {
+                head <- FHead.reads(node)
+                tail <- FTail.reads(obj - name)
+              } yield head :: tail
+            case _ => JsError(s"Json attribute $name is undefined")
+          }
         case _ => JsError("Json object required")
       }
 
