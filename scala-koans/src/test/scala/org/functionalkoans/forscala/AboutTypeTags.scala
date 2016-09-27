@@ -1,12 +1,13 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 
 import scala.reflect.runtime.universe._
 
 class Candy
 
-class AboutTypeTags extends KoanSuite {
+class AboutTypeTags extends KoanFunSuite with Matchers {
 
   koan("""TypeTags can be used to determine a type used
          |   before it erased by the VM by using an implicit TypeTag argument.""") {

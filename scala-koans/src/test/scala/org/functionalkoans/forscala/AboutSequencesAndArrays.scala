@@ -1,8 +1,9 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 
-class AboutSequencesAndArrays extends KoanSuite {
+class AboutSequencesAndArrays extends KoanFunSuite with Matchers {
 
   koan("A list can be converted to an array") {
     val l = List(1, 2, 3)

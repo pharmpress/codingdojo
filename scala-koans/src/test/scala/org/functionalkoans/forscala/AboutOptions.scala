@@ -1,8 +1,9 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 
-class AboutOptions extends KoanSuite {
+class AboutOptions extends KoanFunSuite with Matchers {
 
   koan("Option can have one of two values - Some or None") {
     val someValue: Option[String] = Some("I am wrapped in something")

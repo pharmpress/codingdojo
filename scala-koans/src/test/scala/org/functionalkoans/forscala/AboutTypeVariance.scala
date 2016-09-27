@@ -1,9 +1,10 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 import org.scalatest.Matchers
 
-class AboutTypeVariance extends KoanSuite with Matchers {
+class AboutTypeVariance extends KoanFunSuite with Matchers {
 
   class Fruit
 

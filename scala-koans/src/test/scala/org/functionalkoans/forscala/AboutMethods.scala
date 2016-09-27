@@ -1,10 +1,11 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 
 import scala.annotation.tailrec
 
-class AboutMethods extends KoanSuite {
+class AboutMethods extends KoanFunSuite with Matchers {
 
   koan( """A method's last statement will be what is returned
           | There is no need for the keyword `return`.

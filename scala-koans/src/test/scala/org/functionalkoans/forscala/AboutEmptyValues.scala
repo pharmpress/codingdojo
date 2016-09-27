@@ -1,9 +1,10 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 
 
-class AboutEmptyValues extends KoanSuite {
+class AboutEmptyValues extends KoanFunSuite with Matchers {
 
   koan("None equals None") {
     assert(None === __)

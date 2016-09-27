@@ -1,8 +1,9 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 
-class AboutNamedAndDefaultArguments() extends KoanSuite {
+class AboutNamedAndDefaultArguments() extends KoanFunSuite with Matchers {
 
   class WithoutClassParameters() {
     def addColors(red: Int, green: Int, blue: Int) = {

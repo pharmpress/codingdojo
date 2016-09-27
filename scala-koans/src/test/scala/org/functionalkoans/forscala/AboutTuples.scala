@@ -2,9 +2,10 @@ package org.functionalkoans.forscala
 
 import java.util.Date
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 
-class AboutTuples extends KoanSuite {
+class AboutTuples extends KoanFunSuite with Matchers {
 
   koan("Tuples can be created easily") {
     val tuple = ("apple", "dog")

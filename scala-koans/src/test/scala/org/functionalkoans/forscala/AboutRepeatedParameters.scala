@@ -1,8 +1,9 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 
-class AboutRepeatedParameters extends KoanSuite {
+class AboutRepeatedParameters extends KoanFunSuite with Matchers {
 
   def repeatedParameterMethod(x: Int, y: String, z: Any*) = {
     "%d %ss can give you %s".format(x, y, z.mkString(", "))

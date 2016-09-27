@@ -1,8 +1,9 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 
-class AboutUniformAccessPrinciple extends KoanSuite {
+class AboutUniformAccessPrinciple extends KoanFunSuite with Matchers {
 
   class CalculatesAgeUsingMethod(var currentYear: Int, birthYear: Int) {
 

@@ -1,9 +1,10 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 import org.scalatest.Matchers
 
-class AboutStringInterpolation extends KoanSuite with Matchers {
+class AboutStringInterpolation extends KoanFunSuite with Matchers {
 
   koan(
     """String can be placed in not only in a format method call

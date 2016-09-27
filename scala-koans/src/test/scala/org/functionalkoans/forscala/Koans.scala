@@ -1,9 +1,9 @@
 package org.functionalkoans.forscala
 
 import org.scalatest._
-import support.Master
+import support.KoansSuites
 
-class Koans extends Suites(
+class Koans extends KoansSuites(showFailures = true)(
   new AboutAsserts,
   new AboutValAndVar,
   new AboutLiteralBooleans,
@@ -49,9 +49,4 @@ class Koans extends Suites(
   new AboutTypeSignatures,
   new AboutTypeVariance,
   new AboutEnumerations
-) {
-
-  override def run(testName: Option[String], args: Args): Status = {
-    super.run(testName, args.copy(stopper = Master))
-  }
-}
+)

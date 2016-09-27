@@ -1,10 +1,11 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 
 import scala.collection.mutable
 
-class AboutMutableMaps extends KoanSuite {
+class AboutMutableMaps extends KoanFunSuite with Matchers {
 
   koan("Mutable maps can be created easily") {
     val myMap = mutable.Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")

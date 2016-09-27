@@ -1,8 +1,9 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 
-class AboutClasses extends KoanSuite {
+class AboutClasses extends KoanFunSuite with Matchers {
 
   // you can define class with var or val parameters
   class ClassWithVarParameter(var description: String)

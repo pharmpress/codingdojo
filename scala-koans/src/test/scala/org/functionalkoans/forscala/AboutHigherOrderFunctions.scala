@@ -1,8 +1,9 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 
-class AboutHigherOrderFunctions extends KoanSuite {
+class AboutHigherOrderFunctions extends KoanFunSuite with Matchers {
 
   koan("Meet lambda. Anonymous function") {
     def lambda = { x: Int => x + 1 }

@@ -1,9 +1,10 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 
 
-class AboutAdvancedOptions extends KoanSuite {
+class AboutAdvancedOptions extends KoanFunSuite with Matchers {
   koan("Option is more than just a replacement of null, its also a collection") {
     Some(10) map { _ + 10} should be(__)
     Some(10) filter { _ == 10} should be(__)

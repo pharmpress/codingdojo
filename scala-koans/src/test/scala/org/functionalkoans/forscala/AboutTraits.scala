@@ -1,8 +1,9 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 
-class AboutTraits extends KoanSuite {
+class AboutTraits extends KoanFunSuite with Matchers {
   koan("A class uses the extends keyword to mixin a trait if it is the only relationship the class inherits") {
     case class Event(name: String)
 

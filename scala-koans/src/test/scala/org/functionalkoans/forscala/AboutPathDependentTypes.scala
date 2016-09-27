@@ -1,6 +1,7 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 
 case class Board(length: Int, height: Int) {
   case class Coordinate(x: Int, y: Int) {
@@ -9,7 +10,7 @@ case class Board(length: Int, height: Int) {
   val occupied = scala.collection.mutable.Set[Coordinate]()
 }
 
-class AboutPathDependentTypes extends KoanSuite {
+class AboutPathDependentTypes extends KoanFunSuite with Matchers {
   koan(
     """When a class is instantiated inside of another object, it belongs to the object.  This is a path
       | dependent type. Once established, it cannot be placed inside of another object""") {
