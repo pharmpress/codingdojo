@@ -1,6 +1,6 @@
-package examples
+package examples1
 
-case class BigCaseClass(
+case class MediumCaseClass(
   param1: Int = 0,
   param2: Int = 0,
   param3: Int = 0,
@@ -22,13 +22,5 @@ case class BigCaseClass(
   param19: Int = 0,
   param20: Int = 0,
   param21: Int = 0,
-  param22: Int = 0,
-  param23: Int = 0,
-  param24: Int = 0,
-  param25: Int = 0,
-  param26: Int = 0,
-  param27: Int = 0,
-  param28: Int = 0,
-  param29: Int = 0,
-  param30: Int = 0
+  param22: Int = 0
 )
