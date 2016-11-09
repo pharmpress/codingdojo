@@ -8,7 +8,7 @@ Running the koans
 
 The Scala Koans Exercises are now using Luke Amdor’s runner and SBT 0.10. To start, type the following at the SBT prompt:
 
-> namaste
+> koans
 
 Or, you can run specific koans (e.g., AboutAsserts) with:
 

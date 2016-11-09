@@ -1,9 +1,10 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 
 
-class AboutExtractors extends KoanSuite {
+class AboutExtractors extends KoanFunSuite with Matchers {
   koan("When you create a case class, it automatically can be used with " +
     "pattern matching since it has an extractor") {
     case class Employee(firstName: String, lastName: String)

@@ -1,10 +1,11 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 
 import scala.collection.mutable
 
-class AboutMutableSets extends KoanSuite {
+class AboutMutableSets extends KoanFunSuite with Matchers {
 
   koan("Mutable sets can be created easily") {
     val mySet = mutable.Set("Michigan", "Ohio", "Wisconsin", "Iowa")

@@ -1,11 +1,12 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 
 import language.postfixOps
 import org.scalatest.Matchers
 
-class AboutInfixPrefixAndPostfixOperators extends KoanSuite with Matchers {
+class AboutInfixPrefixAndPostfixOperators extends KoanFunSuite with Matchers {
 
   koan("""Simple: Infix Operators are available if an object
            |  has a method that takes one parameter.""") {

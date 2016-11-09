@@ -1,11 +1,12 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 import org.scalatest.Matchers
 
 import language.implicitConversions
 
-class AboutImplicits extends KoanSuite with Matchers {
+class AboutImplicits extends KoanFunSuite with Matchers {
 
   koan("""Implicits wrap around existing classes to provide extra functionality
            |   This is similar to \'monkey patching\' in Ruby, and Meta-Programming in Groovy.

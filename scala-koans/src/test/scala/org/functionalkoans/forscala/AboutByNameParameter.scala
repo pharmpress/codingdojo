@@ -1,6 +1,7 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 
 /**
  * AboutByNameParameter
@@ -8,7 +9,7 @@ import org.functionalkoans.forscala.support.KoanSuite
  * Prerequisites: AboutEither, AboutHigherOrderFunctions, AboutExceptions,
  *                About Pattern Matching, AboutApply
  */
-class AboutByNameParameter extends KoanSuite {
+class AboutByNameParameter extends KoanFunSuite with Matchers {
 
   koan(
     """() => Int is a Function type that takes a Unit type. Unit is known as 'void' to a Java programmer. The function

@@ -1,6 +1,7 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 
 class SecretAgent(val name: String) {
   def shoot(n: Int) {
@@ -25,7 +26,7 @@ object Person {
 }
 
 
-class AboutObjects extends KoanSuite {
+class AboutObjects extends KoanFunSuite with Matchers {
   koan(
     """An object is a singleton. One object -- that's it. This object is a replacement of static in Java,
       | and is called upon much in the same way""") {

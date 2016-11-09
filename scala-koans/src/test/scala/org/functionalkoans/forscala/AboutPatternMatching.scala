@@ -1,8 +1,9 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 
-class AboutPatternMatching extends KoanSuite {
+class AboutPatternMatching extends KoanFunSuite with Matchers {
 
 
   koan("Pattern matching returns something") {

@@ -1,11 +1,12 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 import org.scalatest.Matchers
 
 import scala.language.reflectiveCalls
 
-class AboutStructuralTypes extends KoanSuite with Matchers{
+class AboutStructuralTypes extends KoanFunSuite with Matchers{
    class Duck {
       def quack = "Quack"
    }

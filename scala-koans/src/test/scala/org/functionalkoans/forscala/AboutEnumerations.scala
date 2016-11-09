@@ -1,10 +1,11 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 import org.scalatest.Matchers
 
 
-class AboutEnumerations extends KoanSuite with Matchers {
+class AboutEnumerations extends KoanFunSuite with Matchers {
 
 // To create an enumeration, create an object that extends the abstract class Enumeration,
 // and set a val variable to the method Value.  This is a trick to give values to each val."

@@ -1,10 +1,11 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 
 import scala.annotation.tailrec
 
-class AboutRecursion extends KoanSuite {
+class AboutRecursion extends KoanFunSuite with Matchers {
 
   koan(
     """Methods can be embedded in other methods, this is particularly useful as helper methods for recursion.

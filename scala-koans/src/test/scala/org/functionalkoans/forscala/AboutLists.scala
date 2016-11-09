@@ -1,8 +1,9 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 
-class AboutLists extends KoanSuite {
+class AboutLists extends KoanFunSuite with Matchers {
 
   koan("Eq tests identity (same object)") {
     val a = List(1, 2, 3)

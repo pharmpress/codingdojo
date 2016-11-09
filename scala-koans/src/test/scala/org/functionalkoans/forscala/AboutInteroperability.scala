@@ -1,9 +1,10 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 import org.scalatest.Matchers
 
-class AboutInteroperability extends KoanSuite with Matchers {
+class AboutInteroperability extends KoanFunSuite with Matchers {
   koan("""You can interop with a java class and it's use of collections by importing
           |   scala.collection.JavaConversions and letting scala implicitly convert
           |   from a Scala collection type

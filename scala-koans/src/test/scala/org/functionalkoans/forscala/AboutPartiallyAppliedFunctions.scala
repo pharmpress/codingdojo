@@ -1,9 +1,10 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.functionalkoans.forscala.support.KoanFunSuite
+import org.scalatest.Matchers
 import org.scalatest.Matchers
 
-class AboutPartiallyAppliedFunctions extends KoanSuite with Matchers {
+class AboutPartiallyAppliedFunctions extends KoanFunSuite with Matchers {
   koan("""A partially applied function is a function that you do not apply any or all the
          | arguments, creating another function. This partially applied function
          | doesn't apply any arguments""") {
