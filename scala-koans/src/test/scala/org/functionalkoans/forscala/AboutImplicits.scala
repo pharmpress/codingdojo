@@ -1,15 +1,15 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.scalatest.{FunSuite, Matchers}
 import org.scalatest.Matchers
 
 import language.implicitConversions
 
-class AboutImplicits extends KoanSuite with Matchers {
+class AboutImplicits extends FunSuite with Matchers with KoanMatcher {
 
-  koan("""Implicits wrap around existing classes to provide extra functionality
+  test("""Implicits wrap around existing classes to provide extra functionality
            |   This is similar to \'monkey patching\' in Ruby, and Meta-Programming in Groovy.
-           |   Creating a method isOdd for Int, which doesn't exist""") {
+           |   Creating a method isOdd for Int, which doesn't exist""".stripMargin) {
 
     class KoanIntWrapper(val original: Int) {
       def isOdd = original % 2 != 0
@@ -21,7 +21,7 @@ class AboutImplicits extends KoanSuite with Matchers {
     20.isOdd should be(__)
   }
 
-  koan("""Implicits rules can be imported into your scope with an import""") {
+  test("""Implicits rules can be imported into your scope with an import""") {
     object MyPredef {
 
       class KoanIntWrapper(val original: Int) {
@@ -39,7 +39,7 @@ class AboutImplicits extends KoanSuite with Matchers {
     20.isOdd should be(__)
   }
 
-  koan("""Implicits can be used to automatically convert one type to another""") {
+  test("""Implicits can be used to automatically convert one type to another""") {
 
     import java.math.BigInteger
     implicit def Int2BigIntegerConvert(value: Int): BigInteger = new BigInteger(value.toString)
@@ -49,7 +49,7 @@ class AboutImplicits extends KoanSuite with Matchers {
     add(3, 6) should be(__)
   }
 
-  koan("""Implicits can be used declare a value to be provided as a default as
+  test("""Implicits can be used declare a value to be provided as a default as
           |   long as an implicit value is set with in the scope.  These are
           |   called implicit function parameters""") {
 
@@ -63,7 +63,7 @@ class AboutImplicits extends KoanSuite with Matchers {
     howMuchCanIMake_?(95) should be(__)
   }
 
-  koan("""Implicit Function Parameters can contain a list of implicits""") {
+  test("""Implicit Function Parameters can contain a list of implicits""") {
 
     def howMuchCanIMake_?(hours: Int)(implicit amount: BigDecimal, currencyName: String) =
       (amount * hours).toString() + " " + currencyName
@@ -77,7 +77,7 @@ class AboutImplicits extends KoanSuite with Matchers {
     howMuchCanIMake_?(95) should be(__)
   }
 
-  koan("""Default arguments though are preferred to Implicit Function Parameters""") {
+  test("""Default arguments though are preferred to Implicit Function Parameters""") {
 
     def howMuchCanIMake_?(hours: Int, amount: BigDecimal = 34, currencyName: String = "Dollars") =
       (amount * hours).toString() + " " + currencyName

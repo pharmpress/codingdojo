@@ -1,10 +1,10 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.scalatest.{FunSuite, Matchers}
 
 
-class AboutAdvancedOptions extends KoanSuite {
-  koan("Option is more than just a replacement of null, its also a collection") {
+class AboutAdvancedOptions extends FunSuite with Matchers with KoanMatcher  {
+  test("Option is more than just a replacement of null, its also a collection") {
     Some(10) map { _ + 10} should be(__)
     Some(10) filter { _ == 10} should be(__)
     Some(Some(10)) flatMap { _ map { _ + 10}} should be(__)
@@ -18,7 +18,7 @@ class AboutAdvancedOptions extends KoanSuite {
     newValue2 should be(__)
   }
 
-  koan("Using Option to avoid if checks for null") {
+  test("Using Option to avoid if checks for null") {
     //the ugly version
     def makeFullName(firstName: String, lastName: String) = {
       if (firstName != null) {
@@ -48,7 +48,7 @@ class AboutAdvancedOptions extends KoanSuite {
     makeFullNamePrettyVersion(Some("Nilanjan"), None) should be(__)
   }
 
-  koan("Using in for comprehension") {
+  test("Using in for comprehension") {
     val values = List(Some(10), Some(20), None, Some(15))
     val newValues = for {
       someValue <- values

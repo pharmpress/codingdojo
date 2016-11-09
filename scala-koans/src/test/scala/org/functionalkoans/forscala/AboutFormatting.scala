@@ -1,16 +1,16 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.scalatest.{FunSuite, Matchers}
 import org.scalatest.Matchers
 
-class AboutFormatting extends KoanSuite with Matchers {
+class AboutFormatting extends FunSuite with Matchers with KoanMatcher {
 
-  koan("String can be placed in format") {
+  test("String can be placed in format") {
     val s = "Hello World"
     "Application %s".format(s) should be (__)
   }
 
-  koan("Character Literals can be an a single character") {
+  test("Character Literals can be an a single character") {
     val a = 'a'
     val b = 'B'
 
@@ -23,7 +23,7 @@ class AboutFormatting extends KoanSuite with Matchers {
 
   }
 
-  koan("Character Literals can be an escape sequence, including octal or hexidecimal") {
+  test("Character Literals can be an escape sequence, including octal or hexidecimal") {
 
     val c = '\u0061' //unicode for a
     val d = '\141' //octal for a
@@ -38,12 +38,12 @@ class AboutFormatting extends KoanSuite with Matchers {
   }
 
 
-  koan("Formatting can also include numbers") {
+  test("Formatting can also include numbers") {
     val j = 190
     "%d bottles of beer on the wall" format j - 100 should be (__)
   }
 
-  koan("Formatting can be used for any number of items, like a string and a number") {
+  test("Formatting can be used for any number of items, like a string and a number") {
     val j = 190
     val k = "vodka"
 

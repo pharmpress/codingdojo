@@ -1,10 +1,10 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.scalatest.{FunSuite, Matchers}
 
 
-class AboutExtractors extends KoanSuite {
-  koan("When you create a case class, it automatically can be used with " +
+class AboutExtractors extends FunSuite with Matchers with KoanMatcher  {
+  test("When you create a case class, it automatically can be used with " +
     "pattern matching since it has an extractor") {
     case class Employee(firstName: String, lastName: String)
 
@@ -18,10 +18,10 @@ class AboutExtractors extends KoanSuite {
   }
 
 
-  koan(
+  test(
     """What's an extractor? In Scala it's a method in any `object` called `unapply`, and that method
       | is used to disassemble the object given by returning a tuple wrapped in an option. Extractors can be used
-      | to assign values.""") {
+      | to assign values.""".stripMargin) {
 
     class Car(val make: String, val model: String, val year: Short, val topSpeed: Short)
 
@@ -38,7 +38,7 @@ class AboutExtractors extends KoanSuite {
   }
 
 
-  koan( """Of course an extractor can be used in pattern matching...""") {
+  test( """Of course an extractor can be used in pattern matching...""") {
     class Car(val make: String, val model: String, val year: Short, val topSpeed: Short)
 
     object ChopShop {
@@ -54,7 +54,7 @@ class AboutExtractors extends KoanSuite {
     x._2 should be(__)
   }
 
-  koan(
+  test(
     """Since we aren't really using u and v in the previous pattern matching with can replace them with _.""") {
     class Car(val make: String, val model: String, val year: Short, val topSpeed: Short)
 
@@ -72,7 +72,7 @@ class AboutExtractors extends KoanSuite {
     x._2 should be(__)
   }
 
-  koan("As long as the method signatures aren't the same, " +
+  test("As long as the method signatures aren't the same, " +
     "you can have an many unapply methods as you want") {
     class Car(val make: String, val model: String, val year: Short, val topSpeed: Short)
     class Employee(val firstName: String, val middleName: Option[String], val lastName: String)
@@ -91,7 +91,7 @@ class AboutExtractors extends KoanSuite {
     result should be(__)
   }
 
-  koan(
+  test(
     """An extractor can be any stable object, including instantiated classes with an unapply method.""") {
 
     class Car(val make: String, val model: String, val year: Short, val topSpeed: Short) {
@@ -108,9 +108,9 @@ class AboutExtractors extends KoanSuite {
     result should be(__)
   }
 
-  koan(
+  test(
     """What is typical is to create a custom extractor in the companion object of the class.
-      | In this koan, we use it as an assignment""") {
+      | In this koan, we use it as an assignment""".stripMargin) {
 
     class Employee(val firstName: String,
                    val middleName: Option[String],
@@ -132,7 +132,7 @@ class AboutExtractors extends KoanSuite {
     c should be(__)
   }
 
-  koan("In this koan we use the unapply for pattern matching employee objects") {
+  test("In this koan we use the unapply for pattern matching employee objects") {
 
     class Employee(val firstName: String,
                    val middleName: Option[String],

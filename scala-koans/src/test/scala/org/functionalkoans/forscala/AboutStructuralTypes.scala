@@ -1,11 +1,11 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.scalatest.{FunSuite, Matchers}
 import org.scalatest.Matchers
 
 import scala.language.reflectiveCalls
 
-class AboutStructuralTypes extends KoanSuite with Matchers{
+class AboutStructuralTypes extends FunSuite with Matchers with KoanMatcher{
    class Duck {
       def quack = "Quack"
    }
@@ -14,7 +14,7 @@ class AboutStructuralTypes extends KoanSuite with Matchers{
      def quack = "Here try these experimental pills"
    }
 
-   koan(
+   test(
      """Structural typing is the ability to allow to the best of Scala's ability, duck typing.
        |Duck Typing is where the method signatures and properties become valid semantics, not inheritence.
        |Duck Typing comes from the term "If it walk like duck, and talks like a duck, ...""".stripMargin) {
@@ -27,12 +27,12 @@ class AboutStructuralTypes extends KoanSuite with Matchers{
       onlyThoseThatCanPerformQuacks(BadDoctor) should be (__)
    }
 
-   koan("""Structural typing can also be used to assign values and variables""") {
+   test("""Structural typing can also be used to assign values and variables""") {
        val quacker:{def quack:String} = BadDoctor
        quacker.quack should be (__)
    }
 
-   koan("""Use a semicolon (;) to add more methods for the structural type""") {
+   test("""Use a semicolon (;) to add more methods for the structural type""") {
        class Human {
          def speak = "Uh, hey"
          def move(steps:Int, direction:String) = "Don't want to, rather just chill"
@@ -49,7 +49,7 @@ class AboutStructuralTypes extends KoanSuite with Matchers{
        someBovine.move(3, "South") should be (__)
    }
 
-   koan("""You can use type aliasing if the structural type gets to be too much typing""") {
+   test("""You can use type aliasing if the structural type gets to be too much typing""") {
      class Goose {
        def speak = "HONK!"
        def move(steps:Int, direction:String) = direction match {

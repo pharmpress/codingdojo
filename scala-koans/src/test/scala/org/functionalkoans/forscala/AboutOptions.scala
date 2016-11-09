@@ -1,10 +1,10 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.scalatest.{FunSuite, Matchers}
 
-class AboutOptions extends KoanSuite {
+class AboutOptions extends FunSuite with Matchers with KoanMatcher  {
 
-  koan("Option can have one of two values - Some or None") {
+  test("Option can have one of two values - Some or None") {
     val someValue: Option[String] = Some("I am wrapped in something")
     someValue.get should be(__)
 
@@ -16,7 +16,7 @@ class AboutOptions extends KoanSuite {
     if (flag) Some("Found value") else None
   }  
 
-  koan("Represent null with None because null is a bad idea") {
+  test("Represent null with None because null is a bad idea") {
     val value1 = maybeItWillReturnSomething(true)
     val value2 = maybeItWillReturnSomething(false)
 
@@ -26,7 +26,7 @@ class AboutOptions extends KoanSuite {
     }
   }
 
-  koan("Provide a default value for None") {
+  test("Provide a default value for None") {
     val value1 = maybeItWillReturnSomething(true)
     val value2 = maybeItWillReturnSomething(false)
 
@@ -38,7 +38,7 @@ class AboutOptions extends KoanSuite {
 
   }
 
-  koan("checking whether option has value") {
+  test("checking whether option has value") {
     val value1 = maybeItWillReturnSomething(true)
     val value2 = maybeItWillReturnSomething(false)
 
@@ -46,7 +46,7 @@ class AboutOptions extends KoanSuite {
     value2.isEmpty should be(__)
   }
 
-  koan("Option can also be used with pattern matching") {
+  test("Option can also be used with pattern matching") {
     val someValue: Option[Double] = Some(20.0)
     val value = someValue match {
       case Some(v) => v

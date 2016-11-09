@@ -1,8 +1,8 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.scalatest.{FunSuite, Matchers}
 
-class AboutConstructors extends KoanSuite {
+class AboutConstructors extends FunSuite with Matchers with KoanMatcher  {
 
   class AboutConstructorWithAuxiliaryConstructor(val name: String) {
     // invoke auxiliary constructor
@@ -12,14 +12,14 @@ class AboutConstructors extends KoanSuite {
     }
   }
 
-  koan("Primary constructor specified with a parameter requires that parameter to be passed in") {
+  test("Primary constructor specified with a parameter requires that parameter to be passed in") {
     val aboutMe = new AboutConstructorWithAuxiliaryConstructor()
     aboutMe.name should be (__)
   }
 
   class AboutClassWithNoClassParameter
 
-  koan("Class with no class parameters is called with no arguments") {
+  test("Class with no class parameters is called with no arguments") {
     // add parameter to make this fail
     val aboutMe = new AboutClassWithNoClassParameter
 

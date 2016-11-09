@@ -1,9 +1,9 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.scalatest.{FunSuite, Matchers}
 import org.scalatest.Matchers
 
-class AboutTypeVariance extends KoanSuite with Matchers {
+class AboutTypeVariance extends FunSuite with Matchers with KoanMatcher {
 
   class Fruit
 
@@ -17,7 +17,7 @@ class AboutTypeVariance extends KoanSuite with Matchers {
 
   class Banana extends Fruit
 
-  koan("""Using type inference the type that you instantiate it will be the val or var reference type""") {
+  test("""Using type inference the type that you instantiate it will be the val or var reference type""") {
     class MyContainer[A](a: A)(implicit manifest: scala.reflect.Manifest[A]) {
       private[this] var item = a
 
@@ -35,7 +35,7 @@ class AboutTypeVariance extends KoanSuite with Matchers {
   }
 
 
-  koan("""You can explicitly declare the type variable of the object during instantiation""") {
+  test("""You can explicitly declare the type variable of the object during instantiation""") {
     class MyContainer[A](a: A)(implicit manifest: scala.reflect.Manifest[A]) {
       private[this] var item = a
 
@@ -52,7 +52,7 @@ class AboutTypeVariance extends KoanSuite with Matchers {
     fruitBasket.contents should be(__)
   }
 
-  koan("You can coerece your object to a type.") {
+  test("You can coerece your object to a type.") {
     class MyContainer[A](a: A)(implicit manifest: scala.reflect.Manifest[A]) {
       private[this] var item = a
 
@@ -74,7 +74,7 @@ class AboutTypeVariance extends KoanSuite with Matchers {
 // o compare this koan with the previous koan to compare and contrast. """) {
   
 
-  koan("variable type must match assigned type") {
+  test("variable type must match assigned type") {
     class MyContainer[A](a: A)(implicit manifest: scala.reflect.Manifest[A]) {
       private[this] var item = a
 
@@ -94,7 +94,7 @@ class AboutTypeVariance extends KoanSuite with Matchers {
 // So, if you want to set a Fruit basket to an orange basket so how do we fix that? You make it covariant using +.
 // This will allow you to set the your container to a either a variable with the same type or parent type.
 // In other words, you can assign MyContainer[Fruit] or MyContainer[Citrus]."""
-  koan("covariance lets you specify the container of that type or parent type") {
+  test("covariance lets you specify the container of that type or parent type") {
 
     class MyContainer[+A](a: A)(implicit manifest: scala.reflect.Manifest[A]) {
       private[this] val item = a
@@ -112,7 +112,7 @@ class AboutTypeVariance extends KoanSuite with Matchers {
 // it has to guarantee that what you put in has to be that type.  In other words the reference is a fruit basket,
 // but we still have to make sure that no other fruit can be placed in our orange basket"""
 
-  koan("mutating an object is not allowed with covariance") {
+  test("mutating an object is not allowed with covariance") {
 
     class MyContainer[+A](a: A)(implicit manifest: scala.reflect.Manifest[A]) {
       private[this] val item = a
@@ -135,7 +135,7 @@ class AboutTypeVariance extends KoanSuite with Matchers {
 // This is reverse to covariant.  In our example, we can set a citrus basket to
 // an orange or tangelo basket. Since an orange or tangelo basket is a citrus basket
 
-  koan("contravariance is the opposite of covariance") {
+  test("contravariance is the opposite of covariance") {
 
     class MyContainer[-A](a: A)(implicit manifest: scala.reflect.Manifest[A]) {
       private[this] var item = a
@@ -164,7 +164,7 @@ class AboutTypeVariance extends KoanSuite with Matchers {
 // or a tangelo into a citrus basket. Problem is, if you have a reference to an orange basket,
 // and if you believe that you have an orange basket then you shouldn't expect to get a
 // tangelo out of it.
-  koan("A reference to a parent type means you cannot anticipate getting a more specific type") {
+  test("A reference to a parent type means you cannot anticipate getting a more specific type") {
 
     class MyContainer[-A](a: A)(implicit manifest: scala.reflect.Manifest[A]) {
       private[this] var item = a
@@ -189,7 +189,7 @@ class AboutTypeVariance extends KoanSuite with Matchers {
 // of that type.  In our example, this means that if you create a citrus basket you can only reference that
 // that citrus basket with a citrus variable only.
 
-  koan("invariance means you need to specify the type exactly") {
+  test("invariance means you need to specify the type exactly") {
 
     class MyContainer[A](a: A)(implicit manifest: scala.reflect.Manifest[A]) {
       private[this] var item = a
@@ -208,7 +208,7 @@ class AboutTypeVariance extends KoanSuite with Matchers {
   }
 
 
-  koan("""Declaring a type as invariant also means that you can both mutate and access elements from an object of generic type""") {
+  test("""Declaring a type as invariant also means that you can both mutate and access elements from an object of generic type""") {
 
     class MyContainer[A](a: A)(implicit manifest: scala.reflect.Manifest[A]) {
       private[this] var item = a

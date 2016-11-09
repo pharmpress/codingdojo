@@ -1,14 +1,14 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.scalatest.{FunSuite, Matchers}
 
-class AboutCaseClasses extends KoanSuite {
+class AboutCaseClasses extends FunSuite with Matchers with KoanMatcher  {
 
   // case classes are very convenient, they give you a lot for free. The following Koans will
   // help you understand some of the conveniences. Case classes are also an integral part of
   // pattern matching which will be the subject of a later
 
-  koan("Case classes have an automatic equals method that works") {
+  test("Case classes have an automatic equals method that works") {
     case class Person(first: String, last: String)
 
     val p1 = new Person("Fred", "Jones")
@@ -22,7 +22,7 @@ class AboutCaseClasses extends KoanSuite {
     (p1 eq p3) should be(__) // not identical, merely equal
   }
 
-  koan("Case classes have an automatic hashcode method that works") {
+  test("Case classes have an automatic hashcode method that works") {
     case class Person(first: String, last: String)
 
     val p1 = new Person("Fred", "Jones")
@@ -33,7 +33,7 @@ class AboutCaseClasses extends KoanSuite {
     (p1.hashCode == p3.hashCode) should be(__)
   }
 
-  koan("Case classes have a convenient way they can be created") {
+  test("Case classes have a convenient way they can be created") {
     case class Dog(name: String, breed: String)
 
     val d1 = Dog("Scooby", "Doberman")
@@ -45,13 +45,13 @@ class AboutCaseClasses extends KoanSuite {
     (d2 == d3) should be(__)
   }
 
-  koan("Case classes have a convenient toString method defined") {
+  test("Case classes have a convenient toString method defined") {
     case class Dog(name: String, breed: String)
     val d1 = Dog("Scooby", "Doberman")
     d1.toString should be(__)
   }
 
-  koan("Case classes have automatic properties") {
+  test("Case classes have automatic properties") {
     case class Dog(name: String, breed: String)
 
     val d1 = Dog("Scooby", "Doberman")
@@ -62,7 +62,7 @@ class AboutCaseClasses extends KoanSuite {
     //d1.name = "Scooby Doo"
   }
 
-  koan("Case classes can have mutable properties") {
+  test("Case classes can have mutable properties") {
     case class Dog(var name: String, breed: String) // you can rename a dog, but change its breed? nah!
     val d1 = Dog("Scooby", "Doberman")
 
@@ -75,7 +75,7 @@ class AboutCaseClasses extends KoanSuite {
     d1.breed should be(__)
   }
 
-  koan("Safer alternatives exist for altering case classes") {
+  test("Safer alternatives exist for altering case classes") {
     case class Dog(name: String, breed: String) // Doberman
 
     val d1 = Dog("Scooby", "Doberman")
@@ -92,7 +92,7 @@ class AboutCaseClasses extends KoanSuite {
   // case class has to be defined outside of the test for this one
   case class Person(first: String, last: String, age: Int = 0, ssn: String = "")
 
-  koan("Case classes have default and named parameters") {
+  test("Case classes have default and named parameters") {
 
     val p1 = Person("Fred", "Jones", 23, "111-22-3333")
     val p2 = Person("Samantha", "Jones") // note missing age and ssn
@@ -117,7 +117,7 @@ class AboutCaseClasses extends KoanSuite {
     (p1 == p4) should be(__)
   }
 
-  koan("Case classes can be disassembled to their constituent parts as a tuple") {
+  test("Case classes can be disassembled to their constituent parts as a tuple") {
     val p1 = Person("Fred", "Jones", 23, "111-22-3333")
 
     val parts = Person.unapply(p1).get // this seems weird, but it's critical to other features of Scala

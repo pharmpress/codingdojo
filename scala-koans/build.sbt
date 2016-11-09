@@ -1,6 +1,6 @@
-addCommandAlias("namaste", "~test-only org.functionalkoans.forscala.Koans")
+addCommandAlias("koans", "~test-only org.functionalkoans.forscala.Koans")
 
-name := "Scala Koans"
+name := "scala-koans"
 
 version := "1.0"
 

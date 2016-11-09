@@ -1,8 +1,8 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.scalatest.{FunSuite, Matchers}
 
-class AboutUniformAccessPrinciple extends KoanSuite {
+class AboutUniformAccessPrinciple extends FunSuite with Matchers with KoanMatcher  {
 
   class CalculatesAgeUsingMethod(var currentYear: Int, birthYear: Int) {
 
@@ -17,22 +17,22 @@ class AboutUniformAccessPrinciple extends KoanSuite {
     // calculated at instantiation, returns property when called
   }
 
-  koan("Can access age as parameterless method") {
+  test("Can access age as parameterless method") {
     val me = new CalculatesAgeUsingMethod(2010, 2003)
     me.age should be(__)
   }
 
-  koan("Can access age as property") {
+  test("Can access age as property") {
     val me = new CalculatesAgeUsingProperty(2010, 2003)
     me.age should be(__)
   }
 
-  koan("Cannot add parameter to Method invocation") {
+  test("Cannot add parameter to Method invocation") {
     val me = new CalculatesAgeUsingMethod(2010, 2003)
     // uncomment following line to see what happens if you try to access parameterless method with parens
     //me.age() should be (7)
   }
-  koan("What happens when I update current year using property") {
+  test("What happens when I update current year using property") {
     val me = new CalculatesAgeUsingProperty(2010, 2003)
 
 
@@ -40,7 +40,7 @@ class AboutUniformAccessPrinciple extends KoanSuite {
     me.age should be(__)
   }
 
-  koan("What happens when I update current year using method") {
+  test("What happens when I update current year using method") {
     val me = new CalculatesAgeUsingMethod(2010, 2003)
 
 

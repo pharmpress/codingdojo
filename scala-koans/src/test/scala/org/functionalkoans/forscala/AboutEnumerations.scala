@@ -1,14 +1,14 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.scalatest.{FunSuite, Matchers}
 import org.scalatest.Matchers
 
 
-class AboutEnumerations extends KoanSuite with Matchers {
+class AboutEnumerations extends FunSuite with Matchers with KoanMatcher {
 
 // To create an enumeration, create an object that extends the abstract class Enumeration,
 // and set a val variable to the method Value.  This is a trick to give values to each val."
-  koan("Value assigns a numerical value to fields") {
+  test("Value assigns a numerical value to fields") {
 
     object Planets extends Enumeration {
       val Mercury = Value
@@ -34,7 +34,7 @@ class AboutEnumerations extends KoanSuite with Matchers {
 
 // You can create an enumeration with your own index and your own Strings, in this koan,
 // we will start with an index of one and use Greek names instead of Roman
-  koan("Enumerations can set their own index and name") {
+  test("Enumerations can set their own index and name") {
     object GreekPlanets extends Enumeration {
 
       val Mercury = Value(1, "Hermes")
@@ -60,7 +60,7 @@ class AboutEnumerations extends KoanSuite with Matchers {
   }
 
 // Enumerations can be declared in one line if you are merely setting variables to Value
-  koan("Enumeration declarations can be done on one line") {
+  test("Enumeration declarations can be done on one line") {
     object Planets extends Enumeration {
       val Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto = Value
     }
@@ -76,7 +76,7 @@ class AboutEnumerations extends KoanSuite with Matchers {
   }
 
 
-  koan("Enumerations can be declared with a string value only") {
+  test("Enumerations can be declared with a string value only") {
     object GreekPlanets extends Enumeration {
 
       val Mercury = Value("Hermes")
@@ -100,7 +100,7 @@ class AboutEnumerations extends KoanSuite with Matchers {
     (GreekPlanets.Neptune == GreekPlanets.Jupiter) should be(__)
   }
 
-  koan("You can extend the Enumeration by extending the Val class.") {
+  test("You can extend the Enumeration by extending the Val class.") {
 
     object Planets extends Enumeration {
 

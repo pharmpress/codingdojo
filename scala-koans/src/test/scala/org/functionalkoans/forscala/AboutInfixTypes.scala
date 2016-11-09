@@ -1,12 +1,12 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.scalatest.{FunSuite, Matchers}
 import org.scalatest.Matchers
 
-class AboutInfixTypes extends KoanSuite with Matchers {
+class AboutInfixTypes extends FunSuite with Matchers with KoanMatcher {
 
-  koan("""We can make a type infix, meaning that the type can be displayed in complement
-           between two types in order to make a readable delaration""") {
+  test("""We can make a type infix, meaning that the type can be displayed in complement
+         |  between two types in order to make a readable delaration""".stripMargin) {
     case class Person(name: String)
     class Loves[A, B](val a: A, val b: B)
 
@@ -21,8 +21,8 @@ class AboutInfixTypes extends KoanSuite with Matchers {
     announceCouple(new Loves(romeo, juliet)) should be(__)
   }
 
-  koan("""Of course we can make this a bit more elegant by creating an infix operator
-           |  method to use with our infix type""") {
+  test("""Of course we can make this a bit more elegant by creating an infix operator
+           |  method to use with our infix type""".stripMargin) {
 
     case class Person(name: String) {
       def loves(person: Person) = new Loves(this, person)

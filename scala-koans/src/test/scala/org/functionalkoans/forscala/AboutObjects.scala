@@ -1,6 +1,6 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.scalatest.{FunSuite, Matchers}
 
 class SecretAgent(val name: String) {
   def shoot(n: Int) {
@@ -25,10 +25,10 @@ object Person {
 }
 
 
-class AboutObjects extends KoanSuite {
-  koan(
+class AboutObjects extends FunSuite with Matchers with KoanMatcher  {
+  test(
     """An object is a singleton. One object -- that's it. This object is a replacement of static in Java,
-      | and is called upon much in the same way""") {
+      | and is called upon much in the same way""".stripMargin) {
 
     object Greeting {
       def english = "Hi"
@@ -46,7 +46,7 @@ class AboutObjects extends KoanSuite {
     Greeting.magyar should be(__)
   }
 
-  koan( """Here is proof an object is a singleton, and not a static method in a class""") {
+  test( """Here is proof an object is a singleton, and not a static method in a class""") {
     object Greeting {
       def english = "Hi"
 
@@ -68,9 +68,9 @@ class AboutObjects extends KoanSuite {
   }
 
 
-  koan(
+  test(
     """An object that has the same name as class is called a companion object,
-      | it is used to contain factories for the class that it complements""") {
+      | it is used to contain factories for the class that it complements""".stripMargin) {
 
     class Movie(val name: String, val year: Short)
 
@@ -90,9 +90,9 @@ class AboutObjects extends KoanSuite {
   }
 
 
-  koan(
+  test(
     """A companion object stores shared variables and values for every instantiated class to share.
-      | (See SecretAgent class and companion object above).""") {
+      | (See SecretAgent class and companion object above).""".stripMargin) {
 
 
     val bond = new SecretAgent("James Bond")
@@ -111,7 +111,7 @@ class AboutObjects extends KoanSuite {
   }
 
 
-  koan("A companion object can also see private values and variables of the instantiated objects") {
+  test("A companion object can also see private values and variables of the instantiated objects") {
 
     val clark = new Person("Clark Kent", "Superman")
     val peter = new Person("Peter Parker", "Spiderman")

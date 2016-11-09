@@ -1,16 +1,16 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.scalatest.{FunSuite, Matchers}
 
-class AboutLazySequences extends KoanSuite {
+class AboutLazySequences extends FunSuite with Matchers with KoanMatcher  {
 
-  koan("Creating a lazy collection form a strict collection") {
+  test("Creating a lazy collection form a strict collection") {
     val strictList = List(10, 20, 30)
     val lazyList = strictList.view
     lazyList.head should be(__)
   }
 
-  koan("Strict collection always processes its elements but " +
+  test("Strict collection always processes its elements but " +
        "lazy collection does it on demand") {
     var x = 0
     def inc = {x += 1; x}
@@ -30,7 +30,7 @@ class AboutLazySequences extends KoanSuite {
     x should be(__)
   }
 
-  koan("Lazy collection sometimes avoid processing errors") {
+  test("Lazy collection sometimes avoid processing errors") {
     val lazyList = List(2, -2, 0, 4).view map { 2 / _ }
     lazyList.head should be(__)
     lazyList(1) should be(__)
@@ -39,13 +39,13 @@ class AboutLazySequences extends KoanSuite {
     }
   }
 
-  koan("Lazy collections could also be infinite") {
+  test("Lazy collections could also be infinite") {
     val infinite = Stream.from(1)
     infinite.take(4).sum should be(__)
     Stream.continually(1).take(4).sum should be(__)
   }
 
-  koan("Always remember tail of a lazy collection is never computed unless required") {
+  test("Always remember tail of a lazy collection is never computed unless required") {
     def makeLazy(value: Int): Stream[Int] = {
       Stream.cons(value, makeLazy(value + 1))
     }

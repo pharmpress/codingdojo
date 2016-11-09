@@ -1,14 +1,14 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.scalatest.{FunSuite, Matchers}
 import org.scalatest.Matchers
 
-class AboutPartialFunctions extends KoanSuite with Matchers {
+class AboutPartialFunctions extends FunSuite with Matchers with KoanMatcher {
 
-  koan( """A partial function is a trait that when
+  test( """A partial function is a trait that when
           | implemented can be used as building blocks to determine
           | a solution.  The trait PartialFunction requires that the
-          | the method isDefinedAt and apply be implemented.""") {
+          | the method isDefinedAt and apply be implemented.""".stripMargin) {
 
     val doubleEvens: PartialFunction[Int, Int] = new PartialFunction[Int, Int] {
       //States that this partial function will take on the task
@@ -30,8 +30,8 @@ class AboutPartialFunctions extends KoanSuite with Matchers {
     whatToDo(4) should be(__)
   }
 
-  koan( """Case statements are a quick way to create partial functions. When you create a case
-          | statement, the apply and isDefinedAt is created for you.""") {
+  test( """Case statements are a quick way to create partial functions. When you create a case
+          | statement, the apply and isDefinedAt is created for you.""".stripMargin) {
 
     //The case statements are called case statements with guards
     val doubleEvens: PartialFunction[Int, Int] = {
@@ -46,8 +46,8 @@ class AboutPartialFunctions extends KoanSuite with Matchers {
     whatToDo(4) should be(__)
   }
 
-  koan( """The result of partial functions can have an \'andThen\' function added to the end
-          | of the chain""") {
+  test( """The result of partial functions can have an \'andThen\' function added to the end
+          | of the chain""".stripMargin) {
 
     //These are called case statements with guards
     val doubleEvens: PartialFunction[Int, Int] = {
@@ -63,8 +63,8 @@ class AboutPartialFunctions extends KoanSuite with Matchers {
     whatToDo(4) should be(__)
   }
 
-  koan( """The result of partial functions can have an \'andThen\' function added to the end
-          | of the chain used to continue onto another chain of logic""") {
+  test( """The result of partial functions can have an \'andThen\' function added to the end
+          | of the chain used to continue onto another chain of logic""".stripMargin) {
 
     val doubleEvens: PartialFunction[Int, Int] = {
       case x: Int if (x % 2) == 0 => x * 2

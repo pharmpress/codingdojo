@@ -1,9 +1,9 @@
 package org.functionalkoans.forscala
 
-import org.functionalkoans.forscala.support.KoanSuite
+import org.scalatest.{FunSuite, Matchers}
 
-class AboutTraits extends KoanSuite {
-  koan("A class uses the extends keyword to mixin a trait if it is the only relationship the class inherits") {
+class AboutTraits extends FunSuite with Matchers with KoanMatcher  {
+  test("A class uses the extends keyword to mixin a trait if it is the only relationship the class inherits") {
     case class Event(name: String)
 
     trait EventListener {
@@ -25,7 +25,7 @@ class AboutTraits extends KoanSuite {
     myListener.listen(evt) should be (__)
   }
 
-  koan("A class can only \'extend\' from one class or trait, any subsequent extension should use the keyword \'with\'") {
+  test("A class can only \'extend\' from one class or trait, any subsequent extension should use the keyword \'with\'") {
 
     case class Event(name: String)
 
@@ -49,7 +49,7 @@ class AboutTraits extends KoanSuite {
     myListener.listen(evt) should be (__)
   }
 
-  koan("Traits are polymorphic. Any type can be referred to by another type if related by extension") {
+  test("Traits are polymorphic. Any type can be referred to by another type if related by extension") {
     case class Event(name: String)
 
     trait EventListener {
@@ -73,7 +73,7 @@ class AboutTraits extends KoanSuite {
     myListener.isInstanceOf[AnyRef] should be(__)
   }
 
-  koan("Traits can have concrete implementations that can be mixed into concrete classes with it's own state") {
+  test("Traits can have concrete implementations that can be mixed into concrete classes with it's own state") {
     trait Logging {
       var logCache = List[String]()
 
@@ -106,7 +106,7 @@ class AboutTraits extends KoanSuite {
     baker.logCache.size should be(__)
   }
 
-  koan("""Traits can also be mixed during instantiation after the fact!
+  test("""Traits can also be mixed during instantiation after the fact!
           | This is useful if you only want to mixin per instance and not per class""") {
 
     trait Logging {
@@ -147,7 +147,7 @@ class AboutTraits extends KoanSuite {
   }
 
 
-  koan("Traits are stackable and can change the behavior of methods that the traits are stacked upon") {
+  test("Traits are stackable and can change the behavior of methods that the traits are stacked upon") {
     trait Doubling extends IntQueue {
       abstract override def put(x: Int) { super.put(2 * x) } //abstract override is necessary to stack traits
     }
@@ -161,7 +161,7 @@ class AboutTraits extends KoanSuite {
     myQueue.get() should be (__)
   }
 
-  koan("Just like other traits, stackable traits can be mixed after the fact") {
+  test("Just like other traits, stackable traits can be mixed after the fact") {
     trait Doubling extends IntQueue {
       abstract override def put(x: Int) { super.put(2 * x) } //abstract override is necessary to stack traits
     }
@@ -172,10 +172,10 @@ class AboutTraits extends KoanSuite {
     myQueue.get() should be (__)
   }
 
-  koan(
+  test(
     """More traits can be stacked one atop another, make sure that all overrides
       | are labelled, abstract override.  The order of the mixins are important.
-      | Traits on the right take effect first.""") {
+      | Traits on the right take effect first.""".stripMargin) {
 
     trait Doubling extends IntQueue {
       abstract override def put(x: Int) { super.put(2 * x) } //abstract override is necessary to stack traits
@@ -194,7 +194,7 @@ class AboutTraits extends KoanSuite {
   }
 
 
-  koan(
+  test(
     """Same koans as before except that we swapped the order of the traits""") {
 
     trait Doubling extends IntQueue {
@@ -213,7 +213,7 @@ class AboutTraits extends KoanSuite {
   }
 
 
-  koan(
+  test(
     """Using three traits to enhance the IntQueue: Doubling, Incrementing, and Filtering!""") {
 
     trait Doubling extends IntQueue {
@@ -238,7 +238,7 @@ class AboutTraits extends KoanSuite {
     myQueue.get should be (__)
   }
 
-  koan("Traits are instantiated before a the mixed-in class instantiation") {
+  test("Traits are instantiated before a the mixed-in class instantiation") {
     var sb = List[String]()
 
     trait T1 {
@@ -257,7 +257,7 @@ class AboutTraits extends KoanSuite {
   }
 
 
-  koan("Traits are instantiated before a classes instantiation from left to right") {
+  test("Traits are instantiated before a classes instantiation from left to right") {
     var sb = List[String]()
 
     trait T1 {
@@ -279,7 +279,7 @@ class AboutTraits extends KoanSuite {
     sb.mkString(";") should be(__)
   }
 
-  koan("Instantiations are tracked internally and will not allow a duplicate instantiation. " +
+  test("Instantiations are tracked internally and will not allow a duplicate instantiation. " +
     "Note T1 extends T2, and C1 also extends T2, but T2 is only instantiated once.") {
 
     var sb = List[String]()
@@ -304,7 +304,7 @@ class AboutTraits extends KoanSuite {
   }
 
 
-  koan("The diamond of death (http://en.wikipedia.org/wiki/Diamond_problem) is avoided since " +
+  test("The diamond of death (http://en.wikipedia.org/wiki/Diamond_problem) is avoided since " +
     "instantiations are tracked and will not allow multiple instantiations") {
 
     var sb = List[String]()
