@@ -1,9 +1,13 @@
 package com.pharmpress.dojo.currency
 
-import java.util.{Currency => JavaCurrency}
+import java.text.DecimalFormatSymbols
+import java.util.{Locale, Currency => JavaCurrency}
+
+import scala.language.implicitConversions
 
 sealed trait Currency {
   lazy val native: JavaCurrency = JavaCurrency.getInstance(this.toString)
+  lazy val locale: Option[Locale] = DecimalFormatSymbols.getAvailableLocales.find{ l => DecimalFormatSymbols.getInstance(l).getCurrency.getCurrencyCode == this.toString}
 }
 
 object Currency extends Enum[Currency] {
