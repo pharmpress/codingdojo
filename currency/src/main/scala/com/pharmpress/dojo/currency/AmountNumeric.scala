@@ -10,9 +10,9 @@ class AmountNumeric(defaultCurrency: Currency)(implicit currencyConversion: Conv
 
   override def times(x: Amount, y: Amount): Amount = x * y
 
-  override def negate(x: Amount): Amount = x.copy(value = -x.value)
+  override def negate(x: Amount): Amount = -x
 
-  override def fromInt(x: Int): Amount = Amount(x.toDouble, defaultCurrency)
+  override def fromInt(x: Int): Amount = x(defaultCurrency)
 
   override def toInt(x: Amount): Int = x.value.toInt
 

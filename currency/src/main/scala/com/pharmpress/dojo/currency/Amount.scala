@@ -26,6 +26,8 @@ case class Amount(value: AmountType, currency: Currency)(implicit currencyConver
 
   def /(amount: Amount): Amount = performOperation(amount){ _ / _ }
 
+  def unary_- : Amount = copy(value = -value)
+
   def +(otherValue: AmountType) = copy(value = value + otherValue)
 
   def -(otherValue: AmountType) = copy(value = value - otherValue)
