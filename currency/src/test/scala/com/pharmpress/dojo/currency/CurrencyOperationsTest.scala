@@ -35,8 +35,8 @@ class CurrencyOperationsTest extends FunSuite {
 
   test("display") {
     assert(2.0(GBP).toString === "£2.00")
-    assert(2.0(USD).toString === "$2.00")
-    assert(2.0(EUR).toString === "2,00 €")
+    assert(2.0(USD).toString === "USD2.00")
+    assert(2.0(EUR).toString === "€2.00")
     assert(2.0(ITL).toString === "ITL2.00")
   }
 }

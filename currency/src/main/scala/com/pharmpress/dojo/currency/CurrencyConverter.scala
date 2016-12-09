@@ -1,10 +1,13 @@
 package com.pharmpress.dojo.currency
 
-class CurrencyConverter(val base: Currency, val converter: ConverterMethod)
+import java.util.Locale
+
+class CurrencyConverter(val locale: Locale, val base: Currency, val converter: ConverterMethod)
 
 object CurrencyConverter {
   def apply(base: Currency, rates: (Currency, AmountType)*): ConverterType = {
     new CurrencyConverter(
+      locale = Locale.getDefault,
       base = base,
       converter = rates.flatMap {
         case (currency, rate) => Seq(

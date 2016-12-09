@@ -39,13 +39,8 @@ case class Amount(value: AmountType, currency: Currency)(implicit currencyConver
   override def compare(that: Amount): Int = value compare (that to currency).value
 
   override def toString: String = {
-    currency.locale match {
-      case Some(locale) =>
-        NumberFormat.getCurrencyInstance(locale).format(value)
-      case None =>
-        val formatter = NumberFormat.getCurrencyInstance()
-        formatter.setCurrency(currency.native)
-        formatter.format(value)
-    }
+    val formatter = NumberFormat.getCurrencyInstance(currencyConversion.locale)
+    formatter.setCurrency(currency.native)
+    formatter.format(value)
   }
 }
