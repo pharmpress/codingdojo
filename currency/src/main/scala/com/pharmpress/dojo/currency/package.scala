@@ -7,11 +7,7 @@ package object currency {
   type ConverterMethod = PartialFunction[(Currency, Currency), AmountType]
   type ConverterType = CurrencyConverter
 
-  implicit class DoubleAmountWrapper(value: Double)(implicit currencyConversion: ConverterType) {
-    def apply(currency: Currency): Amount = new Amount(value, currency)
-  }
-
-  implicit class IntAmountWrapper(value: Int)(implicit currencyConversion: ConverterType) {
-    def apply(currency: Currency): Amount = new Amount(value, currency)
+  implicit class NumberAmountWrapper[A](value: A)(implicit currencyConversion: ConverterType, conv: A => Number) {
+    def apply(currency: Currency): Amount = new Amount(value.doubleValue(), currency)
   }
 }
