@@ -1,6 +1,10 @@
 val macros = project in file("macros")
 
-val root = (project in file(".")).dependsOn(macros % "test->test;compile->compile").aggregate(macros)
+val root = (project in file("."))
+  .dependsOn(macros % "test->test;compile->compile")
+  .configs(IntegrationTest)
+  .settings(Defaults.itSettings : _*)
+  .aggregate(macros)
 
 name := "currency"
 
@@ -10,11 +14,14 @@ scalaVersion := "2.11.8"
 
 resolvers ++= Seq(
   Resolver.file("Local Ivy Repository", file(Path.userHome.absolutePath+"/.ivy2/local"))(Resolver.ivyStylePatterns),
-  Resolver.sonatypeRepo("releases")
+  Resolver.sonatypeRepo("releases"),
+  Resolver.bintrayRepo("scalaz", "releases"),
+  Resolver.bintrayRepo("megamsys", "scala")
 )
 
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.0.0" % "test",
+  "io.megam" %% "newman" % "1.3.12" % "it,test",
+  "org.scalatest" %% "scalatest" % "3.0.0" % "it,test",
   scalaVersion("org.scala-lang" % "scala-reflect" % _).value,
   scalaVersion("org.scala-lang" % "scala-compiler" % _).value
 )

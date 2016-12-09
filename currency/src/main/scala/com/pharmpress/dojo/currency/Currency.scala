@@ -237,6 +237,7 @@ object Currency extends Enum[Currency] {
   case object KPW extends Currency
 
   implicit def javaCurrencyToCurrency(javaCurrency: JavaCurrency): Currency = {
-    this.values.find(_.native.getCurrencyCode == javaCurrency.getCurrencyCode).getOrElse(throw new IllegalArgumentException(s"${javaCurrency.getCurrencyCode} is not a valid currency code"))
+    Currency.values.find(_.native.getCurrencyCode == javaCurrency.getCurrencyCode).getOrElse(throw new IllegalArgumentException(s"${javaCurrency.getCurrencyCode} is not a valid currency code"))
   }
 }
+
