@@ -1,13 +1,13 @@
 package com.pharmpress.dojo.currency
 
 import java.text.DecimalFormatSymbols
-import java.util.{Locale, Currency => JavaCurrency}
+import java.util.{ Locale, Currency => JavaCurrency }
 
 import scala.language.implicitConversions
 
 sealed trait Currency {
   lazy val native: JavaCurrency = JavaCurrency.getInstance(this.toString)
-  lazy val locale: Option[Locale] = DecimalFormatSymbols.getAvailableLocales.find{ l => DecimalFormatSymbols.getInstance(l).getCurrency.getCurrencyCode == this.toString}
+  lazy val locale: Option[Locale] = DecimalFormatSymbols.getAvailableLocales.find { l => DecimalFormatSymbols.getInstance(l).getCurrency.getCurrencyCode == this.toString }
 }
 
 object Currency extends Enum[Currency] {
@@ -236,4 +236,7 @@ object Currency extends Enum[Currency] {
   case object ATS extends Currency
   case object KPW extends Currency
 
+  implicit def javaCurrencyToCurrency(javaCurrency: JavaCurrency): Currency = {
+    this.values.find(_.native.getCurrencyCode == javaCurrency.getCurrencyCode).getOrElse(throw new IllegalArgumentException(s"${javaCurrency.getCurrencyCode} is not a valid currency code"))
+  }
 }

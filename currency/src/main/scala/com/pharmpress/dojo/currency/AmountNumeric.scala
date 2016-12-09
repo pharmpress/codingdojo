@@ -1,8 +1,7 @@
 package com.pharmpress.dojo.currency
 
-import com.pharmpress.dojo.currency.Converter.ConverterType
-
-class AmountNumeric(defaultCurrency: Currency)(implicit currencyConversion: ConverterType) extends Numeric[Amount] {
+class AmountNumeric(currencyConversion: ConverterType) extends Numeric[Amount] {
+  private implicit val currencyConversion0 = currencyConversion
 
   override def plus(x: Amount, y: Amount): Amount = x + y
 
@@ -12,7 +11,7 @@ class AmountNumeric(defaultCurrency: Currency)(implicit currencyConversion: Conv
 
   override def negate(x: Amount): Amount = -x
 
-  override def fromInt(x: Int): Amount = x(defaultCurrency)
+  override def fromInt(x: Int): Amount = x(currencyConversion.base)
 
   override def toInt(x: Amount): Int = x.value.toInt
 

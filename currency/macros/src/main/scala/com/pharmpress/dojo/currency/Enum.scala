@@ -20,7 +20,7 @@ object Enum {
     c.Expr[Seq[A]] {
       Apply(
         Ident(weakTypeOf[Seq[A]].typeSymbol.companion),
-        subclasses.map{sourceModuleRef}
+        subclasses.map { sourceModuleRef }
       )
     }
   }
